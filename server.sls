@@ -21,6 +21,7 @@ mysql-server:
   service.running:
     - name: mysql
     - enable: True
+    - require:
       - file: 'my.cnf'
     - watch:
       - file: 'my.cnf'
