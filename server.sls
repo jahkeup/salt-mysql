@@ -15,20 +15,20 @@ mysql-server:
           type: password
           value: {{password}}
   pkg.installed:
-    - name: mysql-server-5.5
+    - name: 'mysql-server-5.5'
     - require:
       - debconf: mysql-server
   service.running:
     - name: mysql
     - enable: True
-      - file: my.cnf
+      - file: 'my.cnf'
     - watch:
-      - file: my.cnf
+      - file: 'my.cnf'
 
 'my.cnf':
   file.comment:
-    - name: /etc/mysql/my.cnf
-    - regex: ^bind-address.+=.127\.0\.0\.1$
+    - name: '/etc/mysql/my.cnf'
+    - regex: '^bind-address.+=.127\.0\.0\.1$'
     - require:
         - pkg: mysql-server
 
